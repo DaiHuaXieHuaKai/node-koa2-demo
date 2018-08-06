@@ -1,8 +1,7 @@
-doctype html
-html
- meta(charset="utf-8")
- meta(name="viewport",content="width=device-width,inital-scal=1")
- title 这是一个pug模板
+extends ./layouts/default.pug
+block title
+ title Pug项目目录结构拆分
+block content
  body
   div.container
    h1 Hello #{you}

@@ -61,6 +61,8 @@ html
 
 新建文件夹views，并新增文件index.pug
 
+根据业务需求更改Views结构，拆分公共部分
+
 ```
 //npm install koa-views -S
 
@@ -84,4 +86,5 @@ app.use(async (ctx, next) => {
 
 app.listen(4333)
 ```
+
 代码存放于node-koa-pug分支
