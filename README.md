@@ -21,3 +21,25 @@ app.use(async (ctx,next)=>{
 
 app.listen(4333)
 ```
+
+### Day2
+使用pug动态模板引擎
+
+新建文件夹views并新增文件pug.js
+```
+//npm install pug -S
+const Koa = require('koa')
+const pug = require('pug')
+const { pugView } = require('./views')
+
+const app = new Koa()
+
+app.use(async (ctx,next)=>{
+    ctx.body = pug.render(pugView,{
+        you:'Zhao',
+        me: 'Ying'
+    })
+})
+
+app.listen(4333)
+```
