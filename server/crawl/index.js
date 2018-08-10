@@ -78,6 +78,6 @@ const getData = (index) => {
 getData(i).then(res => {
         process.send({res})
         process.exit(0)
-}).catch(e=>{
+    }).catch(e=>{
     console.log(e)
 })
