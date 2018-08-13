@@ -226,3 +226,48 @@ const uploadFile = async (localFile,fileSaveName)=>{
     }).catch(err=>console.log(err))
 })()
 ```
+
+### Day6
+使用MongoDB对爬取的数据进行存储。并优化爬取内容。
+
+```
+const mongoose = require('mongoose')
+
+const movieSchema = new mongoose.Schema({
+    float: String,
+    href: String,
+    poster: String,
+    info: String,
+    title: String,
+    score: String,
+    hasplay: String,
+    starrings: Array,
+    meta: {
+        createdAt: {
+            type: Date,
+            default: Date.now()
+        },
+        updatedAt: {
+            type: Date,
+            default: Date.now()
+        }
+    }
+},{collection:"movie_qq"})
+
+movieSchema.pre('save', function (next) {
+    if (this.isNew) {
+        this.meta.createdAt = this.meta.updatedAt = Date.now()
+    } else {
+        this.updatedAt = Date.now()
+    }
+    next()
+})
+
+mongoose.model("MovieModel", movieSchema)
+
+
+//使用glob实现文件全部加载
+exports.initSchema = ()=>{
+    glob.sync(resolve(__dirname,'./schema','**/*.js')).map(schema=>require(schema))
+}
+```
