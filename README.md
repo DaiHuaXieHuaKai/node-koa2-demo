@@ -230,6 +230,8 @@ const uploadFile = async (localFile,fileSaveName)=>{
 ### Day6
 使用MongoDB对爬取的数据进行存储。并优化爬取内容。
 
+完整代码于node-koa-mongoose分支
+
 ```
 const mongoose = require('mongoose')
 
