@@ -273,3 +273,47 @@ exports.initSchema = ()=>{
     glob.sync(resolve(__dirname,'./schema','**/*.js')).map(schema=>require(schema))
 }
 ```
+
+### Day7
+使用koa-router并借助koa-compose实现拆分路由文件，建立对应service完成业务逻辑编辑
+
+到此一个基本的项目结构就搭建完毕
+
+完整代码于node-koa-router分支
+
+
+```
+//路由拆分核心代码
+const compose = require('koa-compose')
+const glob = require('glob')
+const {
+    resolve
+} = require('path')
+
+registerRouter = () => {
+    let routers = [];
+    glob.sync(resolve(__dirname, './', '**/*.js'))
+        .filter(value => (value.indexOf('index.js') === -1))
+        .map(router => {
+            routers.push(require(router).routes())
+            routers.push(require(router).allowedMethods())
+        })
+    return compose(routers)
+}
+
+module.exports = registerRouter
+
+//简单service
+const mongoose = require('mongoose')
+
+class Movie {
+
+   static async getAllMovie(){
+        const MovieModel = mongoose.model('MovieModel')
+        const movie = await MovieModel.find({}).sort({'meta.updatedAt':-1})
+        return movie
+    }
+}
+
+module.exports = Movie
+```
