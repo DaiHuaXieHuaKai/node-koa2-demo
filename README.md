@@ -2,9 +2,9 @@
 根据慕课网学习koa2的案例
 
 ### Day1
-初始化git项目，并初始化package.json
+初始化git项目
 
-新建入口文件server/index.js，并修改package.json增加快捷执行命令npm start。
+新建入口文件server/index.js，并在server初始化package.json,并修改package.json增加快捷执行命令npm start。
 
 安装koa，并完成初始配置
 ```
@@ -316,4 +316,24 @@ class Movie {
 }
 
 module.exports = Movie
+```
+### Day8
+新增client文件夹作为客户端，并初始化package.json
+
+为项目添加parcel作为前端页面打包工具
+
+首先在client下新建文件夹src用于放置前台相关文件。
+
+新建页面index.js index.html,然后在index.html中引入index.js
+
+```
+npm install parcel-bundler --save-dev
+```
+
+然后在package.json里面配置scripts新增start,build命令，然后运行npm start,npm run build即可实现预览和打包
+```
+  "scripts": {
+    "start": "parcel src/index.html --open --no-cache",
+    "build": "parcel build src/index.html --no-cache",
+  }
 ```

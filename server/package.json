@@ -1,0 +1,35 @@
+{
+  "name": "koa2-demo",
+  "version": "1.0.0",
+  "description": "study koa2 with imooc",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "parcel build src/index.html --no-cache",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaiHuaXieHuaKai/node-koa2-demo.git"
+  },
+  "keywords": [
+    "koa2",
+    "node"
+  ],
+  "author": "842159717@qq.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DaiHuaXieHuaKai/node-koa2-demo/issues"
+  },
+  "homepage": "https://github.com/DaiHuaXieHuaKai/node-koa2-demo#readme",
+  "dependencies": {
+    "glob": "^7.1.2",
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
+    "koa-views": "^6.1.4",
+    "mongoose": "^5.2.7",
+    "pug": "^2.0.3",
+    "puppeteer": "^1.7.0",
+    "qiniu": "^7.2.1"
+  }
+}
