@@ -33,7 +33,7 @@ const MovieModel = mongoose.model('MovieModel')
                     movie = new MovieModel(item)
                     movie.save(err => {
                         if (!err) {
-                            console.log(`~~~~~~~~~~~${movie.totle}保存完成~~~~~~~~~~~`)
+                            console.log(`~~~~~~~~~~~${movie.title}保存完成~~~~~~~~~~~`)
                         }else{
                             console.log(err)
                         }

@@ -64,7 +64,7 @@ const crawl = async (offset) => {
 let results = [];
 let i = 0;
 const getData = (index) => {
-    if (index < 3) {
+    if (index < 5) {
         return crawl(index).then(data => {
             if (!data) {
                 return [];
@@ -76,11 +76,12 @@ const getData = (index) => {
             })
         })
     } else {
-        return new Promise(resolve => resolve([]));
+        return Promise.resolve([]);
     }
 }
 
 getData(i).then(res => {
+    console.log('爬取完成')
     process.exit(0)
 }).catch(e => {
     throw new Error(`爬取网页数据出错:${e}`)

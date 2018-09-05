@@ -1,34 +1,37 @@
 import React, {Component} from 'react'
+import {Spin} from 'antd'
 
-export default(componentLoad) => {
+export default(loadComponent) => {
     return class AsyncComponent extends Component {
-
-        isunmount = false
-
         constructor() {
             super()
             this.state = {
-                Child: null
+                Child: null,
+                hasUnmount: false
             }
         }
 
-        async componentDidMount() {
-            const {default: Child} = await componentLoad()
-            if (this.unmount) 
+       async componentDidMount() {
+            if (this.state.hasUnmount) 
                 return
+            const {default: Child} = await loadComponent()
             this.setState({Child})
         }
-
         componentWillUnmount() {
-            this.isunmount = true
+            this.setState({hasUnmount: true})
         }
 
         render() {
             const {Child} = this.state
+            const loadingStyle={
+                position:'absolute',
+                left:'50%' ,
+                top: '50%' ,
+                transform: 'translate(-50%,-50%)'
+            }
             return (Child
                 ? <Child {...this.props}/>
-                : '正在加载...')
+                : <Spin size="large" tip="正在加载中..." style={loadingStyle}/>)
         }
     }
-
 }

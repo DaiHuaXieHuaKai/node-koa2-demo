@@ -1,9 +1,12 @@
 const Router = require('koa-router')
 
+
+const Os = require('../services/os.js')
 const router = new Router()
 
-router.get('/',(ctx,next)=>{
-    ctx.body = "welcome"
+router.get('/',async (ctx,next)=>{
+     
+    ctx.body = ctx
 })
 
 
